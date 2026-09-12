@@ -7,6 +7,19 @@ export default defineConfig(() => {
   return {
     base: './',
     plugins: [react(), tailwindcss()],
+    build: {
+      cssCodeSplit: true,
+      chunkSizeWarningLimit: 600,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom'],
+            'vendor-motion': ['motion'],
+            'vendor-icons': ['lucide-react'],
+          },
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

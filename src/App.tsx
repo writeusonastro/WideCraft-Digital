@@ -3,19 +3,29 @@
  * Mehsana, Gujarat
  * Royal Theme Redesign
  */
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { MarqueeStrip } from './components/MarqueeStrip';
-import { Services } from './components/Services';
-import { WhyUs } from './components/WhyUs';
-import { LocalSeoHub } from './components/LocalSeoHub';
-import { Calculator } from './components/Calculator';
-import { ContactSection } from './components/ContactSection';
-import { FaqSection } from './components/FaqSection';
-import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { ScrollProgress } from './components/ScrollProgress';
+
+// Lazy-load below-the-fold modules for blazing-fast initial paint
+const Services = lazy(() => import('./components/Services').then((m) => ({ default: m.Services })));
+const WhyUs = lazy(() => import('./components/WhyUs').then((m) => ({ default: m.WhyUs })));
+const LocalSeoHub = lazy(() => import('./components/LocalSeoHub').then((m) => ({ default: m.LocalSeoHub })));
+const Calculator = lazy(() => import('./components/Calculator').then((m) => ({ default: m.Calculator })));
+const ContactSection = lazy(() => import('./components/ContactSection').then((m) => ({ default: m.ContactSection })));
+const FaqSection = lazy(() => import('./components/FaqSection').then((m) => ({ default: m.FaqSection })));
+const Footer = lazy(() => import('./components/Footer').then((m) => ({ default: m.Footer })));
+
+function SectionFallback() {
+  return (
+    <div className="py-20 flex items-center justify-center text-amber-400/40">
+      <div className="w-6 h-6 border-2 border-amber-400/30 border-t-amber-400 rounded-full animate-spin" />
+    </div>
+  );
+}
 
 function MainApp() {
   const [selectedService, setSelectedService] = useState<string>('Website Development');
@@ -52,21 +62,22 @@ function MainApp() {
       <main id="main-content" className="relative">
         <Hero />
         <MarqueeStrip />
-        <Services onSelectService={handleSelectService} />
-        <WhyUs />
-        <LocalSeoHub onKeywordClick={handleKeywordSelect} />
-        <Calculator />
-        <ContactSection
-          selectedService={selectedService}
-          onServiceChange={setSelectedService}
-        />
-        <FaqSection />
+
+        <Suspense fallback={<SectionFallback />}>
+          <Services onSelectService={handleSelectService} />
+          <WhyUs />
+          <LocalSeoHub onKeywordClick={handleKeywordSelect} />
+          <Calculator />
+          <ContactSection
+            selectedService={selectedService}
+            onServiceChange={setSelectedService}
+          />
+          <FaqSection />
+          <Footer />
+        </Suspense>
       </main>
 
-      {/* Footer */}
-      <Footer />
-
-      {/* Floating Action Button */}
+      {/* Floating Call & WhatsApp Action Buttons */}
       <FloatingWhatsApp />
     </div>
   );

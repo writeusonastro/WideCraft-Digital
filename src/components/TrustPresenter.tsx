@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { ShieldCheck, CheckCircle2, Star, MessageSquare, ChevronRight, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ShieldCheck, CheckCircle2, Star, MessageSquare, ChevronRight, Sparkles, UserCheck, Maximize2, X } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data';
+import gestureImg from '../assets/images/presenter_gesture.png';
+import girlImg from '../assets/images/presenter_girl.png';
 
 export const TrustPresenter: React.FC = () => {
   const [presenterStyle, setPresenterStyle] = useState<'gesture' | 'portrait'>('gesture');
+  const [imgError, setImgError] = useState(false);
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
 
-  const presenterImg = presenterStyle === 'gesture' ? '/presenter_gesture.png' : '/presenter_girl.png';
+  const currentImgSrc = presenterStyle === 'gesture' ? gestureImg : girlImg;
   const whatsappUrl = `https://wa.me/917737649405?text=${encodeURIComponent('Hello Widecraft, I saw your genuine agency guarantee and want to verify and discuss a project with 7737649405')}`;
 
   return (
@@ -33,16 +37,36 @@ export const TrustPresenter: React.FC = () => {
           <div className="absolute inset-0 -top-4 rounded-full bg-gradient-to-t from-amber-500/25 via-yellow-400/20 to-transparent blur-xl pointer-events-none" />
 
           {/* Transparent PNG Cutout Image (No solid box/background) */}
-          <div className="relative">
-            <img
-              src={presenterImg}
-              alt="Widecraft Genuine & Reliable Guide"
-              className={`object-contain transition-all duration-300 ${
-                presenterStyle === 'gesture'
-                  ? 'h-40 sm:h-48 md:h-52 drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] drop-shadow-[0_0_18px_rgba(245,158,11,0.35)]'
-                  : 'h-36 sm:h-44 md:h-48 drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] drop-shadow-[0_0_18px_rgba(245,158,11,0.35)]'
-              }`}
-            />
+          <div
+            className="relative cursor-pointer group"
+            onClick={() => setIsPhotoModalOpen(true)}
+            title="Click to view full photo"
+          >
+            {!imgError ? (
+              <div className="relative">
+                <img
+                  src={currentImgSrc}
+                  alt="Widecraft Genuine & Reliable Guide"
+                  loading="eager"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                  onError={() => setImgError(true)}
+                  className={`object-contain transition-all duration-300 group-hover:scale-105 ${
+                    presenterStyle === 'gesture'
+                      ? 'h-40 sm:h-48 md:h-52 drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] drop-shadow-[0_0_18px_rgba(245,158,11,0.35)]'
+                      : 'h-36 sm:h-44 md:h-48 drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] drop-shadow-[0_0_18px_rgba(245,158,11,0.35)]'
+                  }`}
+                />
+                <span className="absolute bottom-1 right-1 bg-black/70 backdrop-blur-md text-amber-300 p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity text-[10px] flex items-center gap-1 border border-amber-500/30">
+                  <Maximize2 className="w-3 h-3" />
+                </span>
+              </div>
+            ) : (
+              <div className="h-40 sm:h-48 md:h-52 w-32 flex flex-col items-center justify-center rounded-2xl bg-amber-500/10 border border-amber-500/30 p-3 text-center">
+                <UserCheck className="w-12 h-12 text-amber-400 mb-2" />
+                <span className="text-[11px] font-bold text-amber-300">Widecraft Verified</span>
+              </div>
+            )}
 
             {/* Animated Gesturing Pointer Indicator */}
             <motion.div
@@ -125,6 +149,77 @@ export const TrustPresenter: React.FC = () => {
           </div>
         </div>
       </motion.div>
+
+      {/* High-Resolution Photo Lightbox Modal */}
+      <AnimatePresence>
+        {isPhotoModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsPhotoModalOpen(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-lg w-full bg-[#0a0f28] border border-amber-500/40 rounded-3xl p-6 shadow-2xl overflow-hidden text-center"
+            >
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setIsPhotoModalOpen(false)}
+                className="absolute top-4 right-4 p-2 rounded-full bg-slate-900/80 border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Photo Display */}
+              <div className="flex justify-center py-4">
+                <img
+                  src={currentImgSrc}
+                  alt="Widecraft Brand Ambassador"
+                  className="max-h-80 object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)] drop-shadow-[0_0_25px_rgba(245,158,11,0.4)]"
+                />
+              </div>
+
+              {/* Caption & Guarantee */}
+              <div className="mt-2 space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>100% Verified Widecraft Digital Official</span>
+                </div>
+                <h4 className="text-lg font-bold text-white">Widecraft Trust & Reliability Guide</h4>
+                <p className="text-xs text-slate-300 leading-relaxed max-w-sm mx-auto">
+                  Registered in Mehsana, Gujarat. Fast delivery, transparent pricing, and 24/7 dedicated support on WhatsApp.
+                </p>
+
+                <div className="pt-3 flex justify-center gap-3">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-yellow-300 hover:brightness-110 transition shadow-lg"
+                  >
+                    Direct Chat on WhatsApp
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPresenterStyle((s) => (s === 'gesture' ? 'portrait' : 'gesture'));
+                    }}
+                    className="px-4 py-2.5 rounded-xl text-xs font-semibold text-amber-300 bg-[#0c1334] border border-amber-500/30 hover:bg-amber-500/10 transition"
+                  >
+                    Change Pose
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
