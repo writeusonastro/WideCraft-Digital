@@ -126,7 +126,7 @@ export const FloatingWhatsApp: React.FC = () => {
       </div>
 
       {/* Mobile Sticky Quick-Action Bottom Bar */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#050714]/90 backdrop-blur-md border-t border-slate-800/80 px-3 py-2 flex items-center gap-2 shadow-2xl">
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#050714] border-t border-slate-800 px-3 py-2 flex items-center gap-2 shadow-2xl">
         <a
           href={`tel:${COMPANY_DETAILS.phoneRaw}`}
           className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-bold text-xs bg-gradient-to-r from-amber-400 to-yellow-300 text-slate-950 shadow-md active:scale-95 transition"

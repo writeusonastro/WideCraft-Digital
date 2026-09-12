@@ -79,7 +79,7 @@ export const WhyUs: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.25 }}
                 whileHover={{ x: 6, y: -2, transition: { type: 'spring', stiffness: 350, damping: 20 } }}
-                className="flex items-start gap-4 p-5 rounded-2xl border transition-all bg-[#0a0f24]/90 border-amber-500/20 shadow-md hover:border-amber-400/60 hover:shadow-xl hover:shadow-amber-500/10 group backdrop-blur-md"
+                className="flex items-start gap-4 p-5 rounded-2xl border transition-all bg-[#0a0f24] border-amber-500/20 shadow-md hover:border-amber-400/60 hover:shadow-xl hover:shadow-amber-500/10 group"
               >
                 <div className="p-3 rounded-xl bg-[#060918] border border-amber-500/30 text-amber-400 shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                   <Zap className="w-6 h-6" />
@@ -100,7 +100,7 @@ export const WhyUs: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.35 }}
                 whileHover={{ x: 6, y: -2, transition: { type: 'spring', stiffness: 350, damping: 20 } }}
-                className="flex items-start gap-4 p-5 rounded-2xl border transition-all bg-[#0a0f24]/90 border-amber-500/20 shadow-md hover:border-amber-400/60 hover:shadow-xl hover:shadow-amber-500/10 group backdrop-blur-md"
+                className="flex items-start gap-4 p-5 rounded-2xl border transition-all bg-[#0a0f24] border-amber-500/20 shadow-md hover:border-amber-400/60 hover:shadow-xl hover:shadow-amber-500/10 group"
               >
                 <div className="p-3 rounded-xl bg-[#060918] border border-amber-500/30 text-amber-400 shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                   <Target className="w-6 h-6" />
@@ -121,7 +121,7 @@ export const WhyUs: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.45 }}
                 whileHover={{ x: 6, y: -2, transition: { type: 'spring', stiffness: 350, damping: 20 } }}
-                className="flex items-start gap-4 p-5 rounded-2xl border transition-all bg-[#0a0f24]/90 border-amber-500/20 shadow-md hover:border-amber-400/60 hover:shadow-xl hover:shadow-amber-500/10 group backdrop-blur-md"
+                className="flex items-start gap-4 p-5 rounded-2xl border transition-all bg-[#0a0f24] border-amber-500/20 shadow-md hover:border-amber-400/60 hover:shadow-xl hover:shadow-amber-500/10 group"
               >
                 <div className="p-3 rounded-xl bg-[#060918] border border-amber-500/30 text-amber-400 shrink-0 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                   <ShieldCheck className="w-6 h-6" />
@@ -153,7 +153,7 @@ export const WhyUs: React.FC = () => {
                 rotateY: hqRotateY,
                 transformStyle: 'preserve-3d',
               }}
-              className="p-6 sm:p-8 rounded-3xl border relative shadow-2xl overflow-hidden bg-[#0a0f24]/95 border-amber-500/25 text-white backdrop-blur-xl hover:border-amber-400/50 transition-colors"
+              className="p-6 sm:p-8 rounded-3xl border relative shadow-2xl overflow-hidden bg-[#0a0f24] border-amber-500/25 text-white hover:border-amber-400/50 transition-colors"
             >
               {/* Dynamic 3D Cursor Spotlight Glow */}
               <div

@@ -24,10 +24,10 @@ export const WidecraftLogo: React.FC<WidecraftLogoProps> = ({
 
   const sizeMap = {
     xs: { icon: 24, text: 'text-xs', subText: 'text-[8px]', gap: 'gap-2' },
-    sm: { icon: 32, text: 'text-sm', subText: 'text-[9px]', gap: 'gap-2.5' },
-    md: { icon: 42, text: 'text-lg sm:text-xl', subText: 'text-[10px] sm:text-[11px]', gap: 'gap-3' },
-    lg: { icon: 54, text: 'text-xl sm:text-2xl', subText: 'text-xs', gap: 'gap-3.5' },
-    xl: { icon: 72, text: 'text-2xl sm:text-3xl', subText: 'text-sm', gap: 'gap-4' },
+    sm: { icon: 30, text: 'text-sm', subText: 'text-[9px]', gap: 'gap-2' },
+    md: { icon: 38, text: 'text-base sm:text-lg', subText: 'text-[9px] sm:text-[10px]', gap: 'gap-2 sm:gap-2.5' },
+    lg: { icon: 52, text: 'text-xl sm:text-2xl', subText: 'text-xs', gap: 'gap-3' },
+    xl: { icon: 70, text: 'text-2xl sm:text-3xl', subText: 'text-sm', gap: 'gap-3.5' },
     hero: { icon: 96, text: 'text-3xl sm:text-4xl', subText: 'text-sm font-semibold', gap: 'gap-5' },
   };
 
@@ -202,22 +202,22 @@ export const WidecraftLogo: React.FC<WidecraftLogoProps> = ({
 
       {/* Brand Typography */}
       {showText && (
-        <div className="flex flex-col text-left">
-          <div className="flex items-center gap-1.5">
-            <span className={`font-black tracking-tight text-white group-hover:text-amber-300 transition-colors duration-300 ${currentSize.text}`}>
+        <div className="flex flex-col text-left justify-center whitespace-nowrap leading-tight shrink-0">
+          <div className="inline-flex items-center gap-1.5 whitespace-nowrap">
+            <span className={`font-black tracking-tight text-white group-hover:text-amber-300 transition-colors duration-300 ${currentSize.text} whitespace-nowrap`}>
               Widecraft{' '}
               <span className="font-extrabold bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent">
                 Digital
               </span>
             </span>
             {/* Live Gold Signal Pulse */}
-            <span className="relative flex h-2 w-2 ml-0.5">
+            <span className="relative inline-flex h-2 w-2 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
             </span>
           </div>
           {subtitle && (
-            <span className={`font-medium tracking-wide text-amber-200/70 group-hover:text-amber-200 transition-colors duration-300 ${currentSize.subText}`}>
+            <span className={`font-medium tracking-wider text-amber-200/70 group-hover:text-amber-200 transition-colors duration-300 ${currentSize.subText} whitespace-nowrap mt-0.5 uppercase`}>
               {subtitle}
             </span>
           )}

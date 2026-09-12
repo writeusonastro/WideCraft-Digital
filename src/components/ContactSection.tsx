@@ -178,7 +178,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="p-6 sm:p-10 rounded-3xl border shadow-2xl bg-[#0a0f24]/95 border-amber-500/25 text-white backdrop-blur-xl"
+              className="p-6 sm:p-10 rounded-3xl border shadow-2xl bg-[#0a0f24] border-amber-500/25 text-white"
             >
               <h3 className="text-xl sm:text-2xl font-black mb-2 text-white">
                 Project Scope Inquiry

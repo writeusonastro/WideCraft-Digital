@@ -35,7 +35,7 @@ export const InteractiveShowcase: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.3 }}
-      className="mt-14 max-w-4xl mx-auto rounded-3xl border border-amber-500/25 p-5 sm:p-7 relative overflow-hidden transition-all duration-300 shadow-2xl bg-[#0a0f24]/90 shadow-black/80 backdrop-blur-xl"
+      className="mt-14 max-w-4xl mx-auto rounded-3xl border border-amber-500/25 p-5 sm:p-7 relative overflow-hidden transition-all duration-300 shadow-2xl bg-[#0a0f24] shadow-black/80"
     >
       {/* Top Banner & Mode Toggle */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-5 border-b border-amber-500/20">

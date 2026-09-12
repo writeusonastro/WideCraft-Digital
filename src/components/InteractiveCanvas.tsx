@@ -49,9 +49,9 @@ export const InteractiveCanvas: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Dynamic responsive particle count (reduced on mobile for ultra-fast performance)
+    // Dynamic responsive particle count (optimized for buttery 60-120fps scrolling)
     const isMobile = window.innerWidth < 640;
-    const particleCount = isMobile ? 18 : Math.min(Math.floor((width * height) / 22000), 40);
+    const particleCount = isMobile ? 10 : 18;
     const particles: Particle[] = [];
 
     const getColors = () => ({

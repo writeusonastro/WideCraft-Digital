@@ -56,7 +56,7 @@ export const FaqSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: idx * 0.05 }}
-                className="rounded-2xl border overflow-hidden transition-colors bg-[#0a0f24]/90 border-amber-500/20 shadow-lg hover:border-amber-400/50 backdrop-blur-md"
+                className="rounded-2xl border overflow-hidden transition-colors bg-[#0a0f24] border-amber-500/20 shadow-lg hover:border-amber-400/50"
               >
                 <button
                   type="button"

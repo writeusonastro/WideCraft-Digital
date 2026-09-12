@@ -19,7 +19,7 @@ export const TrustPresenter: React.FC = () => {
         initial={{ opacity: 0, y: 20, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ type: 'spring', stiffness: 200, damping: 22, delay: 0.2 }}
-        className="relative flex flex-col md:flex-row items-center md:items-end gap-3 sm:gap-5 p-4 sm:p-5 rounded-3xl border bg-gradient-to-r from-[#0b122c]/95 via-[#0e1738]/95 to-[#090f26]/95 border-amber-500/40 shadow-2xl shadow-black/80 backdrop-blur-xl mx-auto overflow-visible"
+        className="relative flex flex-col md:flex-row items-center md:items-end gap-3 sm:gap-5 p-4 sm:p-5 rounded-3xl border bg-gradient-to-r from-[#0b122c] via-[#0e1738] to-[#090f26] border-amber-500/40 shadow-2xl shadow-black/80 mx-auto overflow-visible"
       >
         {/* Left/Front: Transparent PNG Presenter Girl emerging from side */}
         <motion.div

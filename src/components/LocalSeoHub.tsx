@@ -222,7 +222,7 @@ export const LocalSeoHub: React.FC<LocalSeoHubProps> = ({ onKeywordClick }) => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="rounded-3xl border border-amber-500/25 bg-[#080d24]/90 backdrop-blur-xl p-6 sm:p-8 lg:p-10 shadow-2xl mb-14 relative overflow-hidden"
+          className="rounded-3xl border border-amber-500/25 bg-[#080d24] p-6 sm:p-8 lg:p-10 shadow-2xl mb-14 relative overflow-hidden"
         >
           {/* Header of Active Cluster */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-8 border-b border-amber-500/15">

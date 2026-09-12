@@ -41,35 +41,12 @@ export const Hero: React.FC = () => {
       {/* Interactive Fluid Particle Network Canvas */}
       <InteractiveCanvas />
 
-      {/* Royal Ambient Glowing Backdrops */}
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.15, 0.28, 0.15],
-          x: [0, 20, 0],
-          y: [0, -15, 0],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[700px] h-[380px] rounded-full blur-[140px] pointer-events-none bg-amber-500/20"
+      {/* Static Royal Ambient Glowing Backdrops (Optimized for 0% scroll repainting) */}
+      <div
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[700px] h-[380px] rounded-full pointer-events-none opacity-20 bg-[radial-gradient(ellipse_at_center,_rgba(245,158,11,0.35),_transparent_70%)]"
       />
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.15, 0.25, 0.15],
-          x: [0, -25, 0],
-          y: [0, 20, 0],
-        }}
-        transition={{
-          duration: 11,
-          repeat: Infinity,
-          ease: 'easeInOut',
-          delay: 1.5,
-        }}
-        className="absolute top-1/3 right-4 sm:right-10 w-[300px] sm:w-[420px] h-[300px] rounded-full blur-[120px] pointer-events-none bg-indigo-600/25"
+      <div
+        className="absolute top-1/3 right-4 sm:right-10 w-[300px] sm:w-[420px] h-[300px] rounded-full pointer-events-none opacity-20 bg-[radial-gradient(ellipse_at_center,_rgba(99,102,241,0.35),_transparent_70%)]"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
@@ -78,7 +55,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-semibold mb-4 border shadow-lg select-none bg-[#0c1224]/90 border-amber-500/30 text-amber-200 backdrop-blur-md hover:border-amber-400 transition-colors"
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-semibold mb-4 border shadow-lg select-none bg-[#0c1224] border-amber-500/30 text-amber-200 hover:border-amber-400 transition-colors"
         >
           <div className="inline-flex items-center gap-1.5 text-amber-400 font-bold">
             <Crown className="w-3.5 h-3.5" />
@@ -87,7 +64,7 @@ export const Hero: React.FC = () => {
           <span className="h-3 w-px bg-amber-500/30" />
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
           </span>
           <span className="text-slate-300">Performance Digital Agency &bull; Mehsana & Pan-India</span>
         </motion.div>
@@ -101,7 +78,7 @@ export const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-[#0b1022]/80 border border-amber-500/20 text-amber-100 shadow-sm backdrop-blur-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-[#0b1022] border border-amber-500/20 text-amber-100 shadow-sm"
             >
               <Award className="w-3.5 h-3.5 text-amber-400" />
               <span>{RECENT_WINS[winIndex]}</span>
@@ -217,7 +194,7 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.55 }}
-          className="mt-14 max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 sm:p-6 rounded-2xl border transition-all bg-[#0a0f24]/80 border-amber-500/25 shadow-2xl shadow-black/80 backdrop-blur-md"
+          className="mt-14 max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 sm:p-6 rounded-2xl border transition-all bg-[#0a0f24] border-amber-500/25 shadow-2xl shadow-black/80"
         >
           {keyMetrics.map((item) => (
             <motion.div

@@ -62,19 +62,13 @@ const SpotlightServiceCard: React.FC<{
     <motion.div
       ref={cardRef}
       id={`service-card-${service.id}`}
-      initial={{ opacity: 0, y: 25 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5, delay: idx * 0.1 }}
-      whileHover={{ y: -6 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.4, delay: idx * 0.08 }}
+      whileHover={{ y: -5 }}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: 'preserve-3d',
-      }}
-      className="p-7 rounded-2xl border transition-colors duration-300 flex flex-col justify-between relative group overflow-hidden bg-[#0a0f24]/90 border-amber-500/20 hover:border-amber-400/60 shadow-xl shadow-black/60 hover:shadow-2xl hover:shadow-amber-500/15 backdrop-blur-md cursor-pointer"
+      className="p-7 rounded-2xl border transition-colors duration-200 flex flex-col justify-between relative group overflow-hidden bg-[#0a0f24] border-amber-500/20 hover:border-amber-400/60 shadow-xl shadow-black/60 hover:shadow-2xl hover:shadow-amber-500/15 cursor-pointer"
     >
       {/* Top Shimmer Gold Line on Hover */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />

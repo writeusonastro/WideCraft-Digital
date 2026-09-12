@@ -167,7 +167,7 @@ export const Calculator: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="rounded-3xl p-6 sm:p-10 border shadow-2xl bg-[#0a0f24]/90 border-amber-500/25 text-white backdrop-blur-xl"
+            className="rounded-3xl p-6 sm:p-10 border shadow-2xl bg-[#0a0f24] border-amber-500/25 text-white"
           >
             {serviceType === 'ads' && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">

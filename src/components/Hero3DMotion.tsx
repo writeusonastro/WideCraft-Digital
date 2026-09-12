@@ -15,7 +15,22 @@ import { WidecraftLogo } from './WidecraftLogo';
 export const Hero3DMotion: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [activePreset, setActivePreset] = useState<'gyro' | 'metrics'>('gyro');
+
+  // Pause 3D animations completely when out of view
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Motion values for smooth 3D tilt tracking
   const mouseX = useMotionValue(0);
@@ -23,13 +38,11 @@ export const Hero3DMotion: React.FC = () => {
 
   // Springs for buttery smooth physics
   const springConfig = { damping: 25, stiffness: 200 };
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [18, -18]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-22, 22]), springConfig);
-  const shineX = useSpring(useTransform(mouseX, [-0.5, 0.5], [20, 80]), springConfig);
-  const shineY = useSpring(useTransform(mouseY, [-0.5, 0.5], [20, 80]), springConfig);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [16, -16]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-18, 18]), springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !isVisible) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -60,19 +73,19 @@ export const Hero3DMotion: React.FC = () => {
       >
         <motion.div
           style={{
-            rotateX,
-            rotateY,
+            rotateX: isHovered ? rotateX : 0,
+            rotateY: isHovered ? rotateY : 0,
             transformStyle: 'preserve-3d',
-            willChange: 'transform',
           }}
-          className="relative rounded-3xl p-6 sm:p-10 border border-amber-500/30 bg-gradient-to-br from-[#0a0f28]/95 via-[#0c1334]/90 to-[#060a1d]/95 shadow-2xl shadow-black/90 backdrop-blur-2xl overflow-hidden transition-shadow duration-300 hover:border-amber-400/60 hover:shadow-amber-500/10"
+          className="relative rounded-3xl p-6 sm:p-10 border border-amber-500/30 bg-gradient-to-br from-[#0a0f28] via-[#0c1334] to-[#060a1d] shadow-2xl shadow-black/90 overflow-hidden transition-shadow duration-300 hover:border-amber-400/60"
         >
           {/* Dynamic Specular 3D Lighting Layer */}
-          <motion.div
-            className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          <div
+            className="pointer-events-none absolute -inset-px rounded-3xl opacity-20 transition-opacity duration-300"
             style={{
-              opacity: isHovered ? 0.35 : 0.15,
-              background: `radial-gradient(450px circle at ${shineX.get()}% ${shineY.get()}%, rgba(245, 158, 11, 0.25), transparent 70%)`,
+              background: isHovered
+                ? 'radial-gradient(500px circle at 50% 30%, rgba(245, 158, 11, 0.2), transparent 70%)'
+                : 'radial-gradient(400px circle at 50% 50%, rgba(245, 158, 11, 0.08), transparent 70%)',
             }}
           />
 
@@ -170,12 +183,12 @@ export const Hero3DMotion: React.FC = () => {
             {/* Desktop & Tablet: Elevated 3D Floating Capability Satellites */}
             {/* Top Left: Sub-2s Speed */}
             <motion.div
-              animate={{ y: [-4, 4, -4] }}
+              animate={isVisible ? { y: [-4, 4, -4] } : {}}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               style={{ transform: 'translateZ(55px)' }}
               className="hidden sm:block absolute top-4 left-4 lg:top-6 lg:left-6 z-20"
             >
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl border bg-[#060a1d]/90 border-amber-500/30 shadow-lg shadow-black/50 backdrop-blur-md">
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl border bg-[#060a1d] border-amber-500/30 shadow-lg shadow-black/50">
                 <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400">
                   <Zap className="w-4 h-4" />
                 </div>
@@ -188,12 +201,12 @@ export const Hero3DMotion: React.FC = () => {
 
             {/* Top Right: SEO Rank #1 */}
             <motion.div
-              animate={{ y: [4, -4, 4] }}
+              animate={isVisible ? { y: [4, -4, 4] } : {}}
               transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
               style={{ transform: 'translateZ(55px)' }}
               className="hidden sm:block absolute top-4 right-4 lg:top-6 lg:right-6 z-20"
             >
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl border bg-[#060a1d]/90 border-amber-500/30 shadow-lg shadow-black/50 backdrop-blur-md">
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl border bg-[#060a1d] border-amber-500/30 shadow-lg shadow-black/50">
                 <div className="p-1.5 rounded-lg bg-yellow-500/20 text-yellow-400">
                   <Search className="w-4 h-4" />
                 </div>
@@ -206,12 +219,12 @@ export const Hero3DMotion: React.FC = () => {
 
             {/* Bottom Left: ROAS Multiplier */}
             <motion.div
-              animate={{ y: [5, -5, 5] }}
+              animate={isVisible ? { y: [5, -5, 5] } : {}}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
               style={{ transform: 'translateZ(55px)' }}
               className="hidden sm:block absolute bottom-4 left-4 lg:bottom-6 lg:left-6 z-20"
             >
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl border bg-[#060a1d]/90 border-emerald-500/30 shadow-lg shadow-black/50 backdrop-blur-md">
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl border bg-[#060a1d] border-emerald-500/30 shadow-lg shadow-black/50">
                 <div className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400">
                   <TrendingUp className="w-4 h-4" />
                 </div>
@@ -224,12 +237,12 @@ export const Hero3DMotion: React.FC = () => {
 
             {/* Bottom Right: Native Apps */}
             <motion.div
-              animate={{ y: [-5, 5, -5] }}
+              animate={isVisible ? { y: [-5, 5, -5] } : {}}
               transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
               style={{ transform: 'translateZ(55px)' }}
               className="hidden sm:block absolute bottom-4 right-4 lg:bottom-6 lg:right-6 z-20"
             >
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl border bg-[#060a1d]/90 border-indigo-500/30 shadow-lg shadow-black/50 backdrop-blur-md">
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-2xl border bg-[#060a1d] border-indigo-500/30 shadow-lg shadow-black/50">
                 <div className="p-1.5 rounded-lg bg-indigo-500/20 text-indigo-400">
                   <Smartphone className="w-4 h-4" />
                 </div>
