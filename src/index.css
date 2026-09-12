@@ -10,9 +10,11 @@
   --color-royal-surface: #0a0f24;
 }
 
-html {
-  background-color: #050714;
-  color: #f8fafc;
+:root, html {
+  color-scheme: dark only;
+  supported-color-schemes: dark;
+  background-color: #050714 !important;
+  color: #f8fafc !important;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
@@ -20,8 +22,18 @@ html {
 }
 
 body {
-  background-color: #050714;
+  background-color: #050714 !important;
+  color: #f8fafc !important;
   overflow-x: hidden;
+}
+
+/* Prevent mobile browsers & OS forced-dark/light filters from inverting graphics & colors */
+*, *::before, *::after {
+  forced-color-adjust: none;
+}
+
+img, svg, canvas, video {
+  color-scheme: dark only;
 }
 
 /* GPU Hardware Acceleration for ultra-smooth 60-120fps motion */
