@@ -17,16 +17,20 @@ import { WidecraftLogo } from './WidecraftLogo';
 
 const BADGES = [
   { label: 'Widecraft Prestige', icon: <WidecraftLogo size="xs" showText={false} interactive={false} /> },
-  { label: 'SEO Optimization Expert', icon: <Search className="w-3.5 h-3.5 text-amber-300" /> },
+  { label: 'SEO Agency Mehsana', icon: <Search className="w-3.5 h-3.5 text-amber-300" /> },
+  { label: 'Google Maps 3-Pack', icon: <TrendingUp className="w-3.5 h-3.5 text-amber-400" /> },
+  { label: 'Website Design Gujarat', icon: <Globe className="w-3.5 h-3.5 text-indigo-400" /> },
   { label: 'Google Ads Partner', icon: <TrendingUp className="w-3.5 h-3.5 text-amber-400" /> },
   { label: 'Meta Certified Ads', icon: <Globe className="w-3.5 h-3.5 text-indigo-400" /> },
   { label: 'Sub-2s Web Vitals', icon: <Zap className="w-3.5 h-3.5 text-yellow-400" /> },
   { label: 'React 19 & Next.js', icon: <Cpu className="w-3.5 h-3.5 text-cyan-400" /> },
+  { label: 'Unjha Exporter SEO', icon: <Search className="w-3.5 h-3.5 text-emerald-400" /> },
   { label: 'Cross-Platform Mobile', icon: <Smartphone className="w-3.5 h-3.5 text-emerald-400" /> },
+  { label: 'Kadi & Kalol GIDC B2B', icon: <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" /> },
   { label: 'High-Converting UX', icon: <Layers className="w-3.5 h-3.5 text-purple-400" /> },
-  { label: 'PostgreSQL & Cloud SQL', icon: <Database className="w-3.5 h-3.5 text-sky-400" /> },
+  { label: 'Ahmedabad & SG Highway', icon: <Database className="w-3.5 h-3.5 text-sky-400" /> },
   { label: 'ROAS Maximization', icon: <Flame className="w-3.5 h-3.5 text-rose-400" /> },
-  { label: 'Gujarat Tech Hub', icon: <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" /> },
+  { label: 'Gujarat #1 Tech Agency', icon: <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" /> },
   { label: 'Full Source Code Rights', icon: <ShieldCheck className="w-3.5 h-3.5 text-amber-300" /> },
 ];
 

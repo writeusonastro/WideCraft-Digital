@@ -147,22 +147,22 @@ export const Footer: React.FC = () => {
             </div>
 
             <div>
-              <span className="font-bold text-white block mb-1 text-xs">Unjha & Patan</span>
+              <span className="font-bold text-white block mb-1 text-xs">Unjha, Patan & Kadi</span>
               <ul className="space-y-1 text-slate-400">
                 <li><a href="#local-seo" className="hover:text-amber-300 transition">Spice Exporter Web Design</a></li>
                 <li><a href="#local-seo" className="hover:text-amber-300 transition">Unjha APMC Global SEO</a></li>
+                <li><a href="#local-seo" className="hover:text-amber-300 transition">Kadi GIDC Industrial Ads</a></li>
                 <li><a href="#local-seo" className="hover:text-amber-300 transition">Patan Website Developer</a></li>
-                <li><a href="#local-seo" className="hover:text-amber-300 transition">Educational Portal Dev</a></li>
               </ul>
             </div>
 
             <div>
-              <span className="font-bold text-white block mb-1 text-xs">Kadi, Kalol & Visnagar</span>
+              <span className="font-bold text-white block mb-1 text-xs">Visnagar & North Guj</span>
               <ul className="space-y-1 text-slate-400">
-                <li><a href="#local-seo" className="hover:text-amber-300 transition">Kadi GIDC Industrial Ads</a></li>
-                <li><a href="#local-seo" className="hover:text-amber-300 transition">Ceramics & Cotton Marketing</a></li>
                 <li><a href="#local-seo" className="hover:text-amber-300 transition">Visnagar Hospital Local SEO</a></li>
+                <li><a href="#local-seo" className="hover:text-amber-300 transition">Palanpur Website Design</a></li>
                 <li><a href="#local-seo" className="hover:text-amber-300 transition">Kalol Manufacturing SEO</a></li>
+                <li><a href="#local-seo" className="hover:text-amber-300 transition">Himmatnagar B2B Growth</a></li>
               </ul>
             </div>
 
